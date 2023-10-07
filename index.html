@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-Sketch</title>
+    <link rel="stylesheet" href="resources/css/index.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Etch-a-Sketch</h1>
+        <ul class="links">
+            <li>
+                <img src="resources/images/github-mark-white.png" alt="github-mark-white">
+                <a href="https://github.com/denis-vp" target="_blank">denis-vp</a>
+            </li>
+            <li>
+                <img src="resources/images/linkedin-icon.png" alt="linkedin-icon">
+                <a href="https://www.linkedin.com/in/denis-pop-966500260/" target="_blank">Denis Pop</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="settings">
+            <div>Settings</div>
+            <button id="colorButton">Color</button>
+            <button id="eraseButton">Erase</button>
+            <button id="clearButton">Clear</button>
+            <button id="guessButton">Guess</button>
+            <input type="range" id="sizeSlider" value="32" min="16" max="64"/>
+            <div id="sizeDisplay">32 x 32</div>    
+        </div>
+        <div id="grid"></div>
+    </div>
+
+    <div class="footer">
+        <p>Etch-a-Sketch</p>
+    </div>
+
+    <script src="resources/js/index.js"></script>
+</body>
+</html>
