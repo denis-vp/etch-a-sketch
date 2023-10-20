@@ -1,4 +1,4 @@
-/*  */
+/* General */
 
 body {
     display: flex;
@@ -9,9 +9,27 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/*  */
+ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
-.header, .footer {
+.active {
+    background-color: rgb(34, 34, 126);
+    color: white;
+}
+
+.disabled {
+    background-color: rgb(156, 156, 164);
+    color: black;
+    cursor: not-allowed;
+}
+
+/* Header + Footer */
+
+#header, #footer {
     background-color: rgb(34, 34, 126);
     display: flex;
     align-items: center;
@@ -20,22 +38,15 @@ body {
     padding-right: 1em;
 }
 
-.header {
+#header {
     justify-content: space-between;
 }
 
-.footer {
+#footer {
     justify-content: center;
 }
 
-.header ul {
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.header ul li {
+.imgLink {
     padding-left: 1em;
     padding-right: 1em;
     display: flex;
@@ -43,40 +54,90 @@ body {
     gap: 0.5em;
 }
 
-.header ul img {
+.imgLink img {
     height: 1em;
     width: auto;
 }
 
-.header a, .footer a {
+#header a, #footer a {
     color: white;
     text-decoration: none;
 }
 
-/*  */
+/* Containers */
 
-.container {
+#container {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5em;
 }
 
-.settings {
+#settingsContainer, #guessContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1em;
 }
 
-/*  */
+button {
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: none;
+    cursor: pointer;
+    min-width: 10em;
+}
+
+/* Grid */
 
 #grid {
     aspect-ratio: 1;
     display: grid;
-    border: 1px solid black;
+    border: 1px solid rgb(0, 0, 0);
     min-height: 40em;
 }
 
 .cell {
     /* border: 1px solid lightgray; */
+}
+
+/* Settings */
+
+#settingsTitle, #guessTitle {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#colorPicker {
+    width: 100px;
+    height: 100px; 
+    border-radius: 50%;
+    overflow: hidden;
+    border: none;
+}
+
+#colorPicker::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+}
+
+#colorPicker::-webkit-color-swatch-wrapper {
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+}
+
+#sizeSlider {
+    width: 10em;
+}
+
+#sizeDisplay {
+    font-weight: bold;
+}
+
+/* Guessing */
+
+#guessContainer ul {
+    flex-direction: column;
 }

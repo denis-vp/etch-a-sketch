@@ -1,15 +1,29 @@
-let currentSize = 32;
+// Settings
+
+let colorMode = true;
 let currentColor = "black";
+const colorPicker = document.querySelector("#colorPicker");
+const colorButton = document.querySelector("#colorButton");
+const eraserButton = document.querySelector("#eraserButton");
+
+let currentSize = 32;
+const sizeSlider = document.querySelector("#sizeSlider");
+const sizeDisplay = document.querySelector("#sizeDisplay");
+
+const clearButton = document.querySelector("#clearButton");
+
+// Guess Mode
+
+let guessMode = false;
+const guessModeButton = document.querySelector("#guessModeButton");
+const computerGuess = document.querySelector("#computerGuess");
+const guessList = document.querySelector("#guessList");
+
+// Grid
 
 const grid = document.querySelector("#grid");
 
-const colorButton = document.querySelector("#colorButton");
-const eraseButton = document.querySelector("#eraseButton");
-const clearButton = document.querySelector("#clearButton");
-const guessButton = document.querySelector("#guessButton");
-
-const sizeSlider = document.querySelector("#sizeSlider");
-const sizeDisplay = document.querySelector("#sizeDisplay");
+// Event Listeners
 
 let mousedown = false;
 document.body.onmousedown = () => {
@@ -19,19 +33,65 @@ document.body.onmouseup = () => {
   mousedown = false;
 };
 
-// Event Listeners
-colorButton.addEventListener("click", () => {
-  currentColor = "black";
+colorPicker.addEventListener("change", () => {
+  currentColor = colorPicker.value;
+  enterColorMode();
 });
-eraseButton.addEventListener("click", () => {
-  currentColor = "white";
+colorButton.addEventListener("click", enterColorMode);
+eraserButton.addEventListener("click", enterEraserMode);
+clearButton.addEventListener("click", () => {
+  enterColorMode();
+  resetGrid();
 });
-clearButton.addEventListener("click", resetGrid);
 sizeSlider.addEventListener("input", () => {
   currentSize = sizeSlider.value;
   resetGrid();
-  sizeDisplay.innerHTML = `${currentSize} x ${currentSize}`;
+  updateSizeDisplay();
 });
+guessModeButton.addEventListener("click", toggleGuessMode);
+
+// Settings functions
+
+function enterColorMode() {
+  colorMode = true;
+  colorButton.classList.add("active");
+  eraserButton.classList.remove("active");
+}
+
+function enterEraserMode() {
+  colorMode = false;
+  colorButton.classList.remove("active");
+  eraserButton.classList.add("active");
+}
+
+function updateSizeDisplay() {
+  sizeDisplay.innerHTML = `${currentSize} x ${currentSize}`;
+}
+
+// Guess Mode functions
+
+function toggleGuessMode() {
+  guessMode = !guessMode;
+  if (guessMode) {
+    guessModeButton.classList.add("active");
+    colorPicker.classList.add("disabled");
+    colorPicker.disabled = true;
+    sizeSlider.classList.add("disabled");
+    sizeSlider.disabled = true;
+    currentColor = "black";
+    colorPicker.value = currentColor;
+    currentSize = 64;
+    sizeSlider.value = currentSize;
+    updateSizeDisplay();
+    resetGrid();
+  } else {
+    guessModeButton.classList.remove("active");
+    colorPicker.classList.remove("disabled");
+    colorPicker.disabled = false;
+    sizeSlider.classList.remove("disabled");
+    sizeSlider.disabled = false;
+  }
+}
 
 // Grid functions
 
@@ -57,7 +117,11 @@ function resetGrid() {
 
 function colorCell(event) {
   if (event.type === "mouseover" && !mousedown) return;
-  event.target.style.backgroundColor = currentColor;
+  if (!colorMode) {
+    event.target.style.backgroundColor = "white";
+  } else {
+    event.target.style.backgroundColor = currentColor;
+  }
 }
 
 window.onload = () => {
