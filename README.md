@@ -1,8 +1,9 @@
 # Etch-a-Sketch Project
 
 ![HTML](https://img.shields.io/badge/HTML-5-orange)
-![CSS](https://img.shields.io/badge/CSS-3-blue)
+![CSS](https://img.shields.io/badge/CSS-3-purple)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
+![License](https://img.shields.io/badge/License-MIT-purple)
 
 Welcome to the Etch-a-Sketch project repository! This web-based project, created with HTML, CSS, and JavaScript, brings the classic drawing toy to your browser. You can try it out by visiting the live version at [Etch-a-Sketch](https://denis-vp.github.io/etch-a-sketch/).
 
